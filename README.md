@@ -1,1 +1,2 @@
 # oop_game-Friends_TV_Series_v2
+You’ll use JavaScript and OOP (Object-Oriented Programming) to select a random, hidden phrase, which a player tries to guess, by clicking letters on an onscreen keyboard.
