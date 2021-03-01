@@ -4,16 +4,30 @@
  * */
 
 let game;
+const letterButtons = document.querySelectorAll('.key');
+const startGame = document.getElementById('btn__reset');
 
-document.getElementById('btn__reset').addEventListener('click', (e) => {
+window.addEventListener("keypress", (e) => {
+    const keyPressed = e.key.toLowerCase();
+    const isLetter = (keyPressed >= "a" && keyPressed <= "z");
+    if (!isLetter) {
+        alert('Sorry only letters');
+    }
+
+    letterButtons.forEach(letter => {
+        if (keyPressed === letter.textContent) {
+            game.handleInteraction(letter);
+        }
+    })
+});
+
+startGame.addEventListener('click', (e) => {
     game = new Game();
     game.startGame();
 });
 
-let letterButtons = document.querySelectorAll('.key');
-
-for (let i = 0; i < letterButtons.length; i++) {
-    letterButtons[i].addEventListener('click', (e) => {
+letterButtons.forEach(letter => {
+    letter.addEventListener('click', (e) => {
         game.handleInteraction(e.target);
-    });
-}
+    })
+});
